@@ -128,7 +128,10 @@ export function ProductProvider({ children }: { children: ReactNode }) {
     }
   }, [adminProducts, hydrated]);
 
-  const products = useMemo(() => [...baseProducts, ...adminProducts], [adminProducts]);
+  const products = useMemo(
+    () => (isSupabaseConfigured ? adminProducts : [...baseProducts, ...adminProducts]),
+    [adminProducts]
+  );
 
   const addProduct = useCallback(
     async (product: ProductInput) => {
