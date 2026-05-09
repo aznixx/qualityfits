@@ -22,7 +22,6 @@ export function Navbar() {
   const navItems = [
     { to: "/", label: "Home" },
     { to: "/collections/all-products", label: "Shop" },
-    { to: "/admin", label: "Admin" },
     { to: "/track-order", label: "Bestelling Volgen" },
     { to: "/contact", label: "Contact" },
   ];
@@ -41,7 +40,6 @@ export function Navbar() {
           <nav className="hidden lg:flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.16em]">
             <NavLink to="/" end className={navClass}>Home</NavLink>
             <NavLink to="/collections/all-products" className={navClass}>Shop</NavLink>
-            <NavLink to="/admin" className={navClass}>Admin</NavLink>
             <NavLink to="/track-order" className={navClass}>Bestelling Volgen</NavLink>
             <NavLink to="/contact" className={navClass}>Contact</NavLink>
           </nav>
