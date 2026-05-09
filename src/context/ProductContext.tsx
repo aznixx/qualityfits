@@ -14,6 +14,8 @@ type ProductInput = Omit<Product, "id" | "slug"> & {
   slug?: string;
 };
 
+type ProductUpdate = Partial<Omit<Product, "id" | "slug">>;
+
 type ProductCtx = {
   products: Product[];
   adminProducts: Product[];
@@ -22,6 +24,7 @@ type ProductCtx = {
   isSupabaseConfigured: boolean;
   refreshProducts: () => Promise<void>;
   addProduct: (product: ProductInput) => Promise<Product>;
+  updateAdminProduct: (slug: string, product: ProductUpdate) => Promise<Product>;
   removeAdminProduct: (slug: string) => Promise<void>;
   clearAdminProducts: () => Promise<void>;
   uploadProductImage: (file: File) => Promise<string>;
@@ -164,6 +167,39 @@ export function ProductProvider({ children }: { children: ReactNode }) {
     setAdminProducts((current) => current.filter((product) => product.slug !== slug));
   }, []);
 
+  const updateAdminProduct = useCallback(
+    async (slug: string, product: ProductUpdate) => {
+      const current = adminProducts.find((item) => item.slug === slug);
+      if (!current) throw new Error("Product niet gevonden.");
+
+      const next: Product = {
+        ...current,
+        ...product,
+        id: current.id,
+        slug: current.slug,
+      };
+
+      if (isSupabaseConfigured && supabase) {
+        const { data, error } = await supabase
+          .from("products")
+          .update(toRow(next))
+          .eq("slug", slug)
+          .select("*")
+          .single();
+
+        if (error) throw new Error(error.message);
+
+        const updated = fromRow(data as ProductRow);
+        setAdminProducts((items) => items.map((item) => (item.slug === slug ? updated : item)));
+        return updated;
+      }
+
+      setAdminProducts((items) => items.map((item) => (item.slug === slug ? next : item)));
+      return next;
+    },
+    [adminProducts]
+  );
+
   const clearAdminProducts = useCallback(async () => {
     if (isSupabaseConfigured && supabase) {
       const slugs = adminProducts.map((product) => product.slug);
@@ -202,6 +238,7 @@ export function ProductProvider({ children }: { children: ReactNode }) {
       isSupabaseConfigured,
       refreshProducts,
       addProduct,
+      updateAdminProduct,
       removeAdminProduct,
       clearAdminProducts,
       uploadProductImage,
@@ -225,6 +262,7 @@ export function ProductProvider({ children }: { children: ReactNode }) {
       products,
       refreshProducts,
       removeAdminProduct,
+      updateAdminProduct,
       uploadProductImage,
     ]
   );
