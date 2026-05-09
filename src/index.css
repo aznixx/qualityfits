@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* QualityFits brand palette (HSL) */
+    --background: 210 20% 98%;
+    --foreground: 210 18% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 18% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 18% 10%;
+
+    --primary: 210 18% 10%;
+    --primary-foreground: 135 100% 86%;
+
+    --secondary: 210 18% 92%;
+    --secondary-foreground: 210 18% 10%;
+
+    --muted: 210 18% 94%;
+    --muted-foreground: 215 10% 42%;
+
+    --accent: 135 100% 68%;
+    --accent-foreground: 210 18% 8%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 16% 86%;
+    --input: 210 16% 86%;
+    --ring: 135 100% 44%;
+
+    --brand-lime: 135 100% 68%;
+    --brand-ink: 210 18% 8%;
+    --brand-graphite: 215 13% 18%;
+    --brand-silver: 210 18% 92%;
+    --brand-frost: 210 20% 98%;
+    --brand-blue: 218 100% 70%;
+    --brand-yellow: 135 100% 68%;
+    --brand-black: 210 18% 8%;
+    --brand-surface: 210 18% 94%;
+
+    --radius: 0.25rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter antialiased;
+  }
+
+  h1, h2, h3, h4, h5 {
+    @apply font-anton tracking-wide;
+  }
+}
+
+@layer utilities {
+  .marquee {
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+    gap: 3rem;
+  }
+  .marquee-track {
+    flex-shrink: 0;
+    display: flex;
+    gap: 3rem;
+    min-width: 100%;
+    animation: marquee 28s linear infinite;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+  }
+
+  .underline-sweep {
+    position: relative;
+    display: inline-block;
+  }
+  .underline-sweep::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.15em;
+    height: 0.15em;
+    width: 100%;
+    background: hsl(var(--brand-lime));
+    transform-origin: left;
+    animation: sweep 1.2s ease-out 0.3s both;
+  }
+  @keyframes sweep {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+
+  .fade-in-up {
+    animation: fadeInUp 0.5s ease-out both;
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .pulse-dot {
+    animation: pulseDot 1.6s ease-in-out infinite;
+  }
+  @keyframes pulseDot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .qf-grid {
+    background-image:
+      linear-gradient(hsl(var(--brand-ink) / 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--brand-ink) / 0.06) 1px, transparent 1px);
+    background-size: 42px 42px;
+  }
+
+  .qf-noise {
+    background-image:
+      radial-gradient(circle at 20% 10%, hsl(var(--brand-blue) / 0.18), transparent 28rem),
+      radial-gradient(circle at 80% 0%, hsl(var(--brand-lime) / 0.16), transparent 24rem);
+  }
+}
