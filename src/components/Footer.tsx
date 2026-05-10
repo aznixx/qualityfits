@@ -10,7 +10,7 @@ export function Footer() {
         <div>
           <Logo light />
           <p className="mt-5 text-sm text-white/62 max-w-xs">
-            QualityFits selecteert Nike, Essentials en ASICS voor cleane dagelijkse fits.
+            QualityFits selecteert Nike, Essentials, ASICS en Prada voor cleane dagelijkse fits.
           </p>
         </div>
         <div>
@@ -20,6 +20,7 @@ export function Footer() {
             <li><Link to="/collections/sneakers" className="hover:text-brand-lime">Sneakers</Link></li>
             <li><Link to="/collections/hoodies" className="hover:text-brand-lime">Hoodies</Link></li>
             <li><Link to="/collections/tracksuits" className="hover:text-brand-lime">Tracksuits</Link></li>
+            <li><Link to="/collections/accessories" className="hover:text-brand-lime">Accessoires</Link></li>
             <li><Link to="/track-order" className="hover:text-brand-lime">Bestelling volgen</Link></li>
           </ul>
         </div>

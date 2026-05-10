@@ -23,16 +23,16 @@ export function ProductCard({ product }: { product: Product }) {
               e.preventDefault();
               addItem(product, { size: product.sizes[1] ?? product.sizes[0] });
             }}
-            className="absolute inset-x-3 bottom-3 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition bg-brand-ink text-white text-xs font-bold uppercase tracking-[0.18em] py-3 hover:bg-brand-lime hover:text-brand-ink"
+            className="absolute inset-x-3 bottom-3 bg-brand-ink py-3 text-xs font-bold uppercase tracking-[0.16em] text-white transition hover:bg-brand-lime hover:text-brand-ink sm:translate-y-3 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100 sm:tracking-[0.18em]"
           >
             In Winkelwagen
           </button>
         </div>
       </Link>
-      <div className="pt-4 grid grid-cols-[1fr,auto] gap-3">
+      <div className="grid grid-cols-[1fr,auto] gap-3 pt-4">
         <Link
           to={`/products/${product.slug}`}
-          className="text-sm font-semibold leading-snug hover:underline underline-offset-4"
+          className="text-base font-semibold leading-snug underline-offset-4 hover:underline sm:text-sm"
         >
           {product.title}
         </Link>

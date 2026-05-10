@@ -5,8 +5,8 @@ create table if not exists public.products (
   id uuid primary key default gen_random_uuid(),
   slug text not null unique,
   title text not null,
-  brand text not null check (brand in ('Nike', 'Essentials', 'ASICS')),
-  category text not null check (category in ('sneakers', 'hoodies', 'tracksuits')),
+  brand text not null check (brand in ('Nike', 'Essentials', 'ASICS', 'Prada')),
+  category text not null check (category in ('sneakers', 'hoodies', 'tracksuits', 'accessories')),
   price integer not null check (price >= 0),
   images text[] not null default '{}',
   sizes text[] not null default '{}',
@@ -18,6 +18,20 @@ create table if not exists public.products (
 );
 
 alter table public.products enable row level security;
+
+alter table public.products
+drop constraint if exists products_brand_check;
+
+alter table public.products
+add constraint products_brand_check
+check (brand in ('Nike', 'Essentials', 'ASICS', 'Prada'));
+
+alter table public.products
+drop constraint if exists products_category_check;
+
+alter table public.products
+add constraint products_category_check
+check (category in ('sneakers', 'hoodies', 'tracksuits', 'accessories'));
 
 drop policy if exists "Products are publicly readable" on public.products;
 create policy "Products are publicly readable"

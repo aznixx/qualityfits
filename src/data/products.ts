@@ -39,7 +39,7 @@ export const products: Product[] = [
     slug: "nike-tech-fleece-set",
     title: "Nike Tech Fleece Set",
     brand: "Nike",
-    category: "tracksuits",
+    category: "accessories",
     price: 14995,
     images: [
       "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=1200&q=85",
@@ -85,6 +85,23 @@ export const products: Product[] = [
     description:
       "Zachte fleece jogger met tapered pijp, elastische cuffs en een cleane fit voor dagelijks gebruik.",
   },
+  {
+    id: "prada-nylon-crossbody",
+    slug: "prada-nylon-crossbody",
+    title: "Prada Nylon Crossbody",
+    brand: "Prada",
+    category: "tracksuits",
+    price: 24995,
+    images: [
+      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=85",
+    ],
+    sizes: ["OS"],
+    colors: ["Zwart"],
+    inStock: true,
+    lowStock: false,
+    description:
+      "Premium Prada item voor een cleane high-end finish bij dagelijkse outfits.",
+  },
 ];
 
 export const getProduct = (slug: string) => products.find((p) => p.slug === slug);
@@ -92,7 +109,7 @@ export const getProduct = (slug: string) => products.find((p) => p.slug === slug
 export const getProductsByCategory = (slug: string) =>
   slug === "all-products"
     ? products
-    : ["nike", "essentials", "asics"].includes(slug)
+    : ["nike", "essentials", "asics", "prada"].includes(slug)
       ? products.filter((p) => p.brand.toLowerCase() === (slug === "asics" ? "asics" : slug))
       : products.filter((p) => p.category === slug);
 

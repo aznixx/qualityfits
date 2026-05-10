@@ -8,6 +8,7 @@ const brandSlugs: Record<string, string> = {
   essentials: "Essentials",
   nike: "Nike",
   asics: "ASICS",
+  prada: "Prada",
 };
 
 type ProductInput = Omit<Product, "id" | "slug"> & {

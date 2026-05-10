@@ -8,7 +8,7 @@ import { SlidersHorizontal, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useProducts } from "@/context/ProductContext";
 
-const ALL_SIZES = ["XS", "S", "M", "L", "XL", "39", "40", "41", "42", "43", "44", "45"];
+const ALL_SIZES = ["XS", "S", "M", "L", "XL", "OS", "39", "40", "41", "42", "43", "44", "45"];
 const SORTS = [
   { id: "newest", label: "Nieuwste" },
   { id: "price-asc", label: "Prijs: laag naar hoog" },
@@ -84,7 +84,7 @@ export default function Collection() {
           <p className="text-xs uppercase tracking-[0.24em] text-brand-blue">Collectie</p>
           <h1 className="font-anton text-5xl md:text-7xl uppercase mt-2 leading-none">{name}</h1>
           <p className="mt-4 text-sm text-muted-foreground max-w-2xl">
-            Premium items van Nike, Essentials en ASICS. Geselecteerd voor cleane dagelijkse fits.
+            Premium items van Nike, Essentials, ASICS en Prada. Geselecteerd voor cleane dagelijkse fits.
           </p>
         </div>
 

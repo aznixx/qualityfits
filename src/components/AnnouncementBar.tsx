@@ -1,4 +1,4 @@
-const message = "100% AUTHENTIEK / NIKE ESSENTIALS ASICS / SNELLE VERZENDING / QUALITYFITS";
+const message = "NIKE ESSENTIALS ASICS PRADA / SNELLE VERZENDING / QUALITYFITS / PREMIUM BRANDS";
 
 export function AnnouncementBar() {
   const items = Array.from({ length: 6 }, (_, i) => i);

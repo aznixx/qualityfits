@@ -1,10 +1,10 @@
-import { RotateCcw, ShieldCheck, Shirt, Truck } from "lucide-react";
+import { RotateCcw, Shirt, Sparkles, Truck } from "lucide-react";
 
 const items = [
-  { icon: ShieldCheck, label: "100% Authentiek", note: "Alle items gecheckt" },
+  { icon: Sparkles, label: "Geselecteerde Items", note: "Premium selectie" },
   { icon: Truck, label: "Snelle Verzending", note: "Snel verwerkt" },
   { icon: RotateCcw, label: "Makkelijk Retour", note: "Niet tevreden? Geld terug" },
-  { icon: Shirt, label: "Premium Merken", note: "Alleen Nike, Essentials en ASICS" },
+  { icon: Shirt, label: "Premium Merken", note: "Nike, Essentials, ASICS en Prada" },
 ];
 
 export function TrustBar() {

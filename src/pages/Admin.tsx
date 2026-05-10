@@ -7,23 +7,26 @@ import { formatPrice } from "@/lib/format";
 import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/lib/supabase";
 
-const brandOptions = ["Nike", "Essentials", "ASICS"] as const;
+const brandOptions = ["Nike", "Essentials", "ASICS", "Prada"] as const;
 const categoryOptions = [
   { value: "sneakers", label: "Sneakers" },
   { value: "hoodies", label: "Hoodies" },
   { value: "tracksuits", label: "Tracksuits" },
+  { value: "accessories", label: "Accessoires" },
 ] as const;
 
 const fallbackImages: Record<string, string> = {
   Nike: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=1200&q=85",
   Essentials: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=1200&q=85",
   ASICS: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=1200&q=85",
+  Prada: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=85",
 };
 
 const defaultSizes: Record<string, string> = {
   sneakers: "39, 40, 41, 42, 43, 44, 45",
   hoodies: "XS, S, M, L, XL",
   tracksuits: "XS, S, M, L, XL",
+  accessories: "OS",
 };
 
 const splitList = (value: string) =>
@@ -305,7 +308,7 @@ export default function Admin() {
             <p className="text-xs uppercase tracking-[0.24em] text-brand-blue">Admin</p>
             <h1 className="mt-2 font-anton text-5xl uppercase leading-none md:text-7xl">Product beheer</h1>
             <p className="mt-4 max-w-2xl text-sm text-muted-foreground">
-              Beheer de live collectie, voorraadstatus, lage voorraad en uploads voor Nike, Essentials en ASICS.
+              Beheer de live collectie, voorraadstatus, lage voorraad en uploads voor Nike, Essentials, ASICS en Prada.
             </p>
           </div>
           <button
